@@ -26,6 +26,9 @@
         <div class="row-content">
             <label class="label text" for="name">Name</label>
             <input class="input" type="text" id="name" name="name" placeholder="Your name" required formControlName = "name">
+            <span class="validate" *ngIf="name && name.invalid && name.touched "> 
+                Name is Required
+            </span>
         </div>
         <div class="row-content">
             <label class="label text" for="profile">Profile Image</label>
@@ -147,7 +150,8 @@
         <div class="buttonParent">
             <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
             <div class="submit-reset">
-                <button type="submit" class="button submitButton" id="submitButton" (click)=onsubmit()>Submit</button>
+                <button type="submit" class="button submitButton" id="submitButton" (click)=onsubmit() [disabled]="!employeeForm.valid">Submit</button>
+
                 <button type="reset" class="resetButton button" id="resetButton">Reset</button>
             </div>
         </div>

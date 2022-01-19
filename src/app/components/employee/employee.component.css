@@ -162,4 +162,9 @@ select {
     background-color: #f5f5f5;
     margin-right: 30px;
 }
-
+.validate{
+    margin-left: 10px;
+    font-size: 15px;
+    font-style:normal;
+    color:red;
+  }
