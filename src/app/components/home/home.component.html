@@ -40,15 +40,15 @@
                 <th>Start Date</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td>Kiran</td>
-                <td>Makam</td>
+            <tr *ngFor="let e of list">
+                <td>{{e.name}}</td>
+                <td>{{e.gender}}</td>
                 <td>
-                    <div class="dept-label">HR</div>
-                    <div class="dept-label">Engineer</div>
+                    <div class="dept-label">{{e.department}}</div>
+                    <div class="dept-label">{{e.department}}</div>
                 </td>
-                <td>400000</td>
-                <td>01 Jan 2020</td>
+                <td>{{e.salary}}</td>
+                <td>{{e.date}}</td>
                 <td>
                     <img id="1" onclick="remove(this)" alt="delete" src="./assets/images/delete.svg">
                     <img id="1" onclick="update(this)" alt="edit" src="./assets/images/create.svg">

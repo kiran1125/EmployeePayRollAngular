@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  list : any;
 
-  ngOnInit(): void {
+  constructor(private http:HttpClient) { }
+
+  ngOnInit() {
+    let response = this.http.get("http://localhost:8080/employeepayroll/get");
+    response.subscribe(data=>this.list=data);
+    console.log(this.list);
   }
 
 }
