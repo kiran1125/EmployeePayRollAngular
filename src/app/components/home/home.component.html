@@ -40,18 +40,17 @@
                 <th>Start Date</th>
                 <th>Actions</th>
             </tr>
-            <tr *ngFor="let e of list">
+            <tr *ngFor="let e of employee">
                 <td>{{e.name}}</td>
                 <td>{{e.gender}}</td>
                 <td>
                     <div class="dept-label">{{e.department}}</div>
-                    <div class="dept-label">{{e.department}}</div>
                 </td>
                 <td>{{e.salary}}</td>
-                <td>{{e.date}}</td>
+                <td>{{e.startDate}}</td>
                 <td>
-                    <img id="1" onclick="remove(this)" alt="delete" src="./assets/images/delete.svg">
-                    <img id="1" onclick="update(this)" alt="edit" src="./assets/images/create.svg">
+                    <img (click)="remove(e)"   alt="delete" src="./assets/images/delete.svg">
+                    <img (click)="update(e.employeeId)" alt="edit" src="./assets/images/create.svg">
                 </td>
             </tr>
         </table>

@@ -1,5 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Employee } from 'src/app/model/employee';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  list : any;
+  employee: any;
+  msg:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private homeService:HomeService,private router:Router) { }
 
-  ngOnInit() {
-    let response = this.http.get("http://localhost:8080/employeepayroll/get");
-    response.subscribe(data=>this.list=data);
-    console.log(this.list);
+  ngOnInit(): void {
+    this.homeService.findAll().subscribe(data=>{
+      this.employee = data.data;
+      console.log(this.employee);
+    });
+
   }
 
+  remove(e:any){
+    this.homeService.deleteEmployee(e.employeeId).subscribe(res =>{
+      alert("Employee Data Deleted..!")
+    })
+  }
+
+  update(employeeId : number){
+    this.router.navigate(['/update',employeeId])
+  }
+  
 }
